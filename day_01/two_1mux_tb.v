@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 23.07.2025 16:05:38
+// Create Date: 23.07.2025 16:25:37
 // Design Name: 
-// Module Name: fulladder_tb
+// Module Name: two_1mux_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,18 +20,14 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module fulladder_tb();
-reg a,b,c;
-wire sum,carry;
-fulladder_halfadder uut(.a(a),.b(b),.c(c),.sum(sum),.carry(carry));
-initial begin 
-a=0;b=0;c=0;#10;
-a=0;b=0;c=1;#10;
-a=0;b=1;c=0;#10;
-a=0;b=1;c=1;#10;
-a=1;b=0;c=0;#10;
-a=1;b=0;c=1;#10;
-a=1;b=1;c=0;#10;
-a=1;b=1;c=1;#10;
+module two_1mux_tb();
+reg i0,i1,s;
+wire out;
+two_oneudpmux uut(.i0(i0),.i1(i1),.s(s),.out(out));
+initial begin
+i0=1;i1=0;s=0;#10;
+i0=1;i1=0;s=1;#10;
+i0=0;i1=1;s=0;#10;
+i0=0;i1=1;s=1;#10;
 end
 endmodule

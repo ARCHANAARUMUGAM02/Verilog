@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 23.07.2025 16:05:38
+// Create Date: 23.07.2025 16:03:11
 // Design Name: 
-// Module Name: fulladder_tb
+// Module Name: fulladder_halfadder
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,18 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module fulladder_tb();
-reg a,b,c;
-wire sum,carry;
-fulladder_halfadder uut(.a(a),.b(b),.c(c),.sum(sum),.carry(carry));
-initial begin 
-a=0;b=0;c=0;#10;
-a=0;b=0;c=1;#10;
-a=0;b=1;c=0;#10;
-a=0;b=1;c=1;#10;
-a=1;b=0;c=0;#10;
-a=1;b=0;c=1;#10;
-a=1;b=1;c=0;#10;
-a=1;b=1;c=1;#10;
-end
+module fulladder_halfadder(input a,b,c,sum,carry);
+wire w1,w2,w3;
+xor xor_1(w1,a,b);
+xor xor_2(sum,c,w1);
+and and_1(w2,a,b);
+and and_2(w3,w1,c);
+or or_gate(carry,w2,w3);
 endmodule

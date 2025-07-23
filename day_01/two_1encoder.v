@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 23.07.2025 16:05:38
+// Create Date: 23.07.2025 15:29:51
 // Design Name: 
-// Module Name: fulladder_tb
+// Module Name: two_1encoder
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,18 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module fulladder_tb();
-reg a,b,c;
-wire sum,carry;
-fulladder_halfadder uut(.a(a),.b(b),.c(c),.sum(sum),.carry(carry));
-initial begin 
-a=0;b=0;c=0;#10;
-a=0;b=0;c=1;#10;
-a=0;b=1;c=0;#10;
-a=0;b=1;c=1;#10;
-a=1;b=0;c=0;#10;
-a=1;b=0;c=1;#10;
-a=1;b=1;c=0;#10;
-a=1;b=1;c=1;#10;
-end
+module two_1encoder(input a1,a0 ,output d0,d1,d2,d3);
+not not_1(not_a0,a0);
+not not_2(not_a1,a1);
+and and_1(d0,not_a0,not_a1);
+and and_2(d1,not_a1,a0);
+and and_3(d2,a1,not_a0);
+and and_4(d3,a1,a0);
 endmodule

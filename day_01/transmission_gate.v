@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 23.07.2025 16:05:38
+// Create Date: 23.07.2025 13:39:33
 // Design Name: 
-// Module Name: fulladder_tb
+// Module Name: transmission_gate
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,18 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module fulladder_tb();
-reg a,b,c;
-wire sum,carry;
-fulladder_halfadder uut(.a(a),.b(b),.c(c),.sum(sum),.carry(carry));
-initial begin 
-a=0;b=0;c=0;#10;
-a=0;b=0;c=1;#10;
-a=0;b=1;c=0;#10;
-a=0;b=1;c=1;#10;
-a=1;b=0;c=0;#10;
-a=1;b=0;c=1;#10;
-a=1;b=1;c=0;#10;
-a=1;b=1;c=1;#10;
-end
+module transmission_gate(output out, input a, ctrl);
+wire c ;
+supply1 Vdd;
+supply0 Gnd;
+not(n_ctrl, ctrl); 
+pmos p1(out, a, n_ctrl);
+nmos n1(out, a, ctrl);
 endmodule

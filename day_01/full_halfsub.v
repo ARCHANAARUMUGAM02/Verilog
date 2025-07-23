@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 23.07.2025 16:05:38
+// Create Date: 23.07.2025 15:46:18
 // Design Name: 
-// Module Name: fulladder_tb
+// Module Name: full_halfsub
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,18 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module fulladder_tb();
-reg a,b,c;
-wire sum,carry;
-fulladder_halfadder uut(.a(a),.b(b),.c(c),.sum(sum),.carry(carry));
-initial begin 
-a=0;b=0;c=0;#10;
-a=0;b=0;c=1;#10;
-a=0;b=1;c=0;#10;
-a=0;b=1;c=1;#10;
-a=1;b=0;c=0;#10;
-a=1;b=0;c=1;#10;
-a=1;b=1;c=0;#10;
-a=1;b=1;c=1;#10;
-end
+module full_halfsub(input a,b,c,output diff,borrow);
+wire w1,w2,w3;
+not not_1(not_a,a);
+not not_2(not_w1,w1);
+xor xor_1(w1,a,b);
+xor xor_2(diff,c,w1);
+and and_1(w2,not_a,b);
+and and_2(w3,not_w1,c);
+or or_gate(borrow,w2,w3);
 endmodule

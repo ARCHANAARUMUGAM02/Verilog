@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 23.07.2025 16:05:38
+// Create Date: 23.07.2025 15:10:43
 // Design Name: 
-// Module Name: fulladder_tb
+// Module Name: two_1demux
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,18 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module fulladder_tb();
-reg a,b,c;
-wire sum,carry;
-fulladder_halfadder uut(.a(a),.b(b),.c(c),.sum(sum),.carry(carry));
-initial begin 
-a=0;b=0;c=0;#10;
-a=0;b=0;c=1;#10;
-a=0;b=1;c=0;#10;
-a=0;b=1;c=1;#10;
-a=1;b=0;c=0;#10;
-a=1;b=0;c=1;#10;
-a=1;b=1;c=0;#10;
-a=1;b=1;c=1;#10;
-end
+module two_1demux(input d,s,output y0,y1);
+not not_1(not_out,s);
+and and_1(y0,not_out,d);
+and and_2(y1,s,d);
 endmodule

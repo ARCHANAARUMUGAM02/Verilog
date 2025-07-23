@@ -3,7 +3,7 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 23.07.2025 07:08:13
+// Create Date: 23.07.2025 15:51:46
 // Design Name: 
 // Module Name: fullsubtract_tb
 // Project Name: 
@@ -23,7 +23,7 @@
 module fullsubtract_tb();
 reg a,b,c;
 wire diff,borrow;
-full_subtract uut(.a(a),.b(b),.c(c),.diff(diff),.borrow(borrow));
+full_halfsub uut(.a(a),.b(b),.c(c),.diff(diff),.borrow(borrow));
 initial begin 
 a=0;b=0;c=0;#10;
 a=0;b=0;c=1;#10;
@@ -35,3 +35,4 @@ a=1;b=1;c=0;#10;
 a=1;b=1;c=1;#10;
 end
 endmodule
+

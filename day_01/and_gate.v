@@ -20,6 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 //AND GATE
+module basic gates();
 module and_gate(
 input a,b,
 output out_and
@@ -69,7 +70,8 @@ module xnor_gate(
 input a,b,
 output out_xnor);
 assign out_xnor=~(a^b);
-endmodule;
+endmodule
+endmodule
 
 
 

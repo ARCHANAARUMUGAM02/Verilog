@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 23.07.2025 21:29:43
+// Create Date: 24.07.2025 07:17:42
 // Design Name: 
-// Module Name: two_1mux_tb
+// Module Name: two_muxbw_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,14 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module two_1mux_tb();
-reg i0,i1,s;
-wire out;
-two_mux_bitwise uut(.i0(i0),.i1(i1),.s(s),.out(out));
+module two_muxbw_tb();
+reg s,d;
+wire y0,y1;
+demux2_1bitwe uut(s,d,y0,y1);
 initial begin
-i0=1;i1=0;s=0;#10;
-i0=1;i1=0;s=1;#10;
-i0=0;i1=1;s=0;#10;
-i0=0;i1=1;s=1;#10;
+s=0;d=0;#10;
+s=1;d=1;#10;
 end
 endmodule

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 23.07.2025 21:29:43
+// Create Date: 23.07.2025 21:19:21
 // Design Name: 
-// Module Name: two_1mux_tb
+// Module Name: two_mux_bitwise
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,14 +20,6 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module two_1mux_tb();
-reg i0,i1,s;
-wire out;
-two_mux_bitwise uut(.i0(i0),.i1(i1),.s(s),.out(out));
-initial begin
-i0=1;i1=0;s=0;#10;
-i0=1;i1=0;s=1;#10;
-i0=0;i1=1;s=0;#10;
-i0=0;i1=1;s=1;#10;
-end
-endmodule
+module two_mux_bitwise(input i0,i1,s,output out);
+assign out=~s&i0|s&i1;
+ endmodule

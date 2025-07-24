@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 23.07.2025 21:29:43
+// Create Date: 23.07.2025 17:47:36
 // Design Name: 
-// Module Name: two_1mux_tb
+// Module Name: ripple_carryadder
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,14 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module two_1mux_tb();
-reg i0,i1,s;
-wire out;
-two_mux_bitwise uut(.i0(i0),.i1(i1),.s(s),.out(out));
-initial begin
-i0=1;i1=0;s=0;#10;
-i0=1;i1=0;s=1;#10;
-i0=0;i1=1;s=0;#10;
-i0=0;i1=1;s=1;#10;
-end
+module ripple_carryadder(input [3:0]a,[3:0]b,c,[3:0]sum,carry);
+wire[3:0]c;
+assign c[0]=c[1];
+assign {c[1],sum[0]}=a[0]|b[0]|c[0];
+assign {c[2],sum[1]}=a[1]|b[1]|c[1];
+assign {c[3],sum[2]}=a[2]|a[2]|c[2];
+assign {carry,sum[3]}=a[3]|b[3]|c[3];  
 endmodule

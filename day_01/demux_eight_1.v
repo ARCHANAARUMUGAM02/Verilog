@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 23.07.2025 21:29:43
+// Create Date: 24.07.2025 07:23:56
 // Design Name: 
-// Module Name: two_1mux_tb
+// Module Name: demux_eight_1
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,14 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module two_1mux_tb();
-reg i0,i1,s;
-wire out;
-two_mux_bitwise uut(.i0(i0),.i1(i1),.s(s),.out(out));
-initial begin
-i0=1;i1=0;s=0;#10;
-i0=1;i1=0;s=1;#10;
-i0=0;i1=1;s=0;#10;
-i0=0;i1=1;s=1;#10;
-end
+module demux_eight_1(input [2:0]s,d,output [7:0]y);
+assign y[0]=(~s[2]&~s[1]&~s[0])?d:0;
+assign y[1]=(~s[2]&~s[1]&s[0])?d:0;
+assign y[2]=(~s[2]&s[1]&~s[0])?d:0;
+assign y[3]=(~s[2]&s[1]&s[0])?d:0;
+assign y[4]=(s[2]&~s[1]&~s[0])?d:0;
+assign y[5]=(s[2]&~s[1]&s[0])?d:0;
+assign y[6]=(s[2]&s[1]&~s[0])?d:0;
+assign y[7]=(s[2]&s[1]&s[0])?d:0;
 endmodule
